@@ -1,0 +1,113 @@
+﻿@page "{id:Guid?}"
+@model MinasBank.Areas.Devs.Pages.CriarModel
+@{
+	Layout = "_Layout";
+	ViewData["Title"] = "Nova Conta Dev";
+}
+<div class="row">
+	@if(Model.Dev.Id == Guid.Empty){
+		<h2 class="text-default" style=color:#ff0066>Nova Conta Dev</h2>
+	}
+	else
+	{
+		<h2 class="text-default" style=color:#ff0066>Alterar Dev Id: @Model.Dev.Id</h2>
+	}
+</div>
+<form method="post" enctype="multipart/form-data">
+	<input type="hidden" asp-for="Dev.Id" />
+	<div class="border backgroundWhite">
+		<div class="form-group row mb-3">
+			<div class="col-2">
+				<label asp-for="Dev.Nome" class="label-weight-bold"></label>
+			</div>
+			<div class="col-5">
+				<input asp-for="Dev.Nome" class="form-control"/>
+				<span asp-validation-for="Dev.Nome" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="form-group row mb-3">
+			<div class="col-2">
+				<label asp-for="Dev.Sobrenome" class="label-weight-bold"></label>
+			</div>
+			<div class="col-5">
+				<input asp-for="Dev.Sobrenome" class="form-control"/>
+				<span asp-validation-for="Dev.Sobrenome" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="form-group row mb-3">
+			<div class="col-2">
+				<label asp-for="Dev.Email" class="label-weight-bold"></label>
+			</div>
+			<div class="col-5">
+				<input asp-for="Dev.Email" class="form-control"/>
+				<span asp-validation-for="Dev.Email" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="form-group row mb-3">
+			<div class="col-2">
+				<label asp-for="Dev.Nascimento" class="label-weight-bold"></label>
+			</div>
+			<div class="col-5">
+				<input asp-for="Dev.Nascimento" class="form-control"/>
+				<span asp-validation-for="Dev.Nascimento" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="form-group row mb-3">
+            <div class="col-2">
+                <label asp-for="Dev.FotoUrl" class="label-weight-bold"></label>
+            </div>
+            <div class="col-5">
+                <input type="file" asp-for="Dev.Foto" class="form-control" />
+            </div>
+        </div>
+		<div class="form-group row mb-3">
+			<div class="col-2">
+				<label asp-for="Dev.GitHub" class="label-weight-bold"></label>
+			</div>
+			<div class="col-5">
+				<input type="text" asp-for="Dev.GitHub" class="form-control"/>
+				<span asp-validation-for="Dev.GitHub" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="form-group row mb-3">
+			<div class="col-2">
+				<label asp-for="Dev.Linkedin" class="label-weight-bold"></label>
+			</div>
+			<div class="col-5">
+				<input type="text" asp-for="Dev.Linkedin" class="form-control"/>
+				<span asp-validation-for="Dev.Linkedin" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="form-group row mb-3">
+			<div class="col-2">
+				<label asp-for="Dev.TextAbout" class="label-weight-bold">Fale sobre você</label>
+			</div>
+			<div class="col-5">
+				<textarea class="form-control" asp-for="Dev.TextAbout"></textarea>
+				<span asp-validation-for="Dev.TextAbout" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="form-group row mb-3">
+			<div class="col-5 offset-2">
+				<div class="row">
+					<div class="col-6">
+						@if(Model.Dev.Id == Guid.Empty)
+						{
+							<input type="submit" class="btn btn-success form-control" value="Salvar" />
+						}
+						else
+						{
+							<input type="submit" class="btn btn-warning form-control" asp-page-handler="Update" value="Alterar" />
+						}
+					</div>
+					<div class="col-6">
+						<a asp-page="Index" class="btn btn-danger form-control">Cancelar</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+ }

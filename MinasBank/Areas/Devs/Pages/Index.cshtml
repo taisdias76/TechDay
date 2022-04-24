@@ -1,0 +1,60 @@
+﻿@page
+@model MinasBank.Areas.Devs.Pages.IndexModel
+@{
+	Layout = "_Layout";
+	ViewData["Title"] = "Desenvolvedoras";
+}
+<div class="row">
+	<div class="col-6">
+		<h2 class="text-default" style=color:#ff0066>Desenvolvedoras</h2>
+        <a asp-area="Devs" asp-page="Criar" class="btn btn-default" style=background-color:#ff0066>
+            <i class="fas fa-plus"></i>&nbsp; Nova Dev
+        </a>
+	</div>
+</div>
+<br />
+<div class="row row-cols-md-3 g-4">
+	@if(!Model.Devs.Any()){
+		<div>
+			<h3 class="text-warning" style=color:#ff0066>Sem desenvolvedoras cadastradas</h3>
+			<p>Crie sua conta Dev para que outras mulheres saibam o que você faz e como te encontrar.</p>
+		</div>
+	}
+	else
+	{
+		foreach(var dev in Model.Devs)
+		{
+			<div class="col">
+				<div class="card">
+					<img src="@dev.FotoUrl" class="card-img-top" alt="@dev.Nome" />
+					<div class="card-body">
+						<h5 class="card-title">@dev.Nome</h5>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item">
+								<label class="label-weight-bold">Email: @dev.Email</label>
+							</li>
+							<li class="list-group-item">
+								<label class="label-weight-bold">Lindekin: @dev.Linkedin</label>
+							</li>
+							<li class="list-group-item">
+								<label class="label-weight-bold">GitHub: @dev.GitHub</label>
+							</li>
+							<li class="list-group-item">
+								<label class="label-weight-bold">Sobre @dev.Nome: @dev.TextAbout</label>
+							</li>
+						</ul>
+						<div class="btn-group" role="group">
+							<a class="btn btn-warning" title="Editar" asp-area="Devs" asp-page="Criar" asp-route-id="@dev.Id"><i class="far fa-edit"></i></a>
+							<button type="button" class="btn btn-danger" title="Excluir" onclick="apagar('@dev.Id')"><i class="far fa-trash-alt"></i></button>
+							<button type="button" class="btn btn-primary" title="Detalhes"><i class="fas fa-info"></i></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+	}
+</div>
+@section Scripts{
+	<partial name="_Modal" />
+	<script src="~/js/dev.js" ></script>
+}
