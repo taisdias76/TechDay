@@ -31,11 +31,13 @@ namespace MinasBank.Areas.Devs.Pages
 
         public async Task<IActionResult> OnPostAsync(CancellationToken cancellationToken)
         {
+            //verificando se os dados são válidos
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
+            
             var result = await _devService.Adicionar(Dev, cancellationToken).ConfigureAwait(false);
             if (!result)
             {
