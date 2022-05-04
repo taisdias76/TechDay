@@ -19,7 +19,7 @@ namespace MinasBank.Migrations
                     FotoUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     GitHub = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Linkedin = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TextAbout = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    TextAbout = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true)
                 },
                 constraints: table =>
                 {

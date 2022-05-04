@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿    using Microsoft.AspNetCore.Mvc;
 using MinasBank.Areas.Devs.Services;
 using System;
 using System.Threading;

@@ -10,7 +10,7 @@ using MinasBank.Shared.Data;
 namespace MinasBank.Migrations
 {
     [DbContext(typeof(BankDbContext))]
-    [Migration("20220424153639_Initial")]
+    [Migration("20220504021150_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,7 +54,8 @@ namespace MinasBank.Migrations
                         .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("TextAbout")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.HasKey("Id");
 

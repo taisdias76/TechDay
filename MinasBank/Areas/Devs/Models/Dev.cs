@@ -10,7 +10,7 @@ namespace MinasBank.Areas.Devs.Models
         public Guid Id { get; set; }
 
         [Required(ErrorMessage = "Campo requerido")]
-        [MaxLength(15, ErrorMessage = "Nome deve ter no máx. 30 caracteres")]
+        [MaxLength(15, ErrorMessage = "Nome deve ter no máx. 15 caracteres")]
         [MinLength(3, ErrorMessage = "Nome deve ter no mín. 3 caracteres")]
         public string Nome { get; set; }
 
@@ -31,10 +31,13 @@ namespace MinasBank.Areas.Devs.Models
         [NotMapped]
         public IFormFile Foto { get; set; }
 
+        [Url(ErrorMessage = "URL inválida!")]
         public string GitHub { get; set; }
 
+        [Url(ErrorMessage = "URL inválida!")]
         public string Linkedin { get; set; }
 
+        [StringLength(500, ErrorMessage = "A biografia deve ter menos de 500 caracteres!")]
         public string TextAbout { get; set; }
     }
 }

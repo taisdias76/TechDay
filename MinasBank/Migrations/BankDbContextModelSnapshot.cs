@@ -52,7 +52,8 @@ namespace MinasBank.Migrations
                         .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("TextAbout")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.HasKey("Id");
 
