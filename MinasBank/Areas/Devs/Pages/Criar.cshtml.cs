@@ -36,9 +36,9 @@ namespace MinasBank.Areas.Devs.Pages
             {
                 return Page();
             }
-
             
             var result = await _devService.Adicionar(Dev, cancellationToken).ConfigureAwait(false);
+
             if (!result)
             {
                 return RedirectToPage("/Error");
